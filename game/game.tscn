@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://klpd7i7ikfsa"]
+
+[ext_resource type="PackedScene" uid="uid://diqkwcl8cfu4m" path="res://player/player.tscn" id="1_l1rk1"]
+[ext_resource type="Script" uid="uid://d157fn1lboe4w" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="PackedScene" uid="uid://doaqoof64fp5" path="res://items/food/food.tscn" id="3_h7iqs"]
+
+[node name="game" type="Node"]
+script = ExtResource("1_vasa2")
+
+[node name="environment" type="Node2D" parent="."]
+
+[node name="chicken" parent="environment" instance=ExtResource("3_h7iqs")]
+position = Vector2(112, -7)
+
+[node name="player" parent="environment" instance=ExtResource("1_l1rk1")]
+position = Vector2(-1, -16)
+
+[node name="Camera2D" type="Camera2D" parent="environment"]
+zoom = Vector2(2.5, 2.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_bottom = 56.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Direction"
+horizontal_alignment = 2
+
+[node name="x_label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "X : "
+horizontal_alignment = 2
+
+[node name="y_label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Y : "
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Facing"
+horizontal_alignment = 2
+
+[node name="x_label2" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "X : "
+horizontal_alignment = 2
+
+[node name="y_label2" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Y : "
+horizontal_alignment = 2
+
+[node name="state_label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "State: "
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="run_label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "Run: "
+
+[node name="tool_label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "Tool: "
+
+[node name="object_label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "Object: "
