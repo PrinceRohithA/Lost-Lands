@@ -9,10 +9,6 @@ func enter(_previous_state: String, data: Dictionary = {}) -> void:
 	
 	if data.has("carry_item"):
 		player.carry_item = data["carry_item"]
-	
-	var carry_item: Node = load(Global.FOOD_SCENE_LOCATION).instantiate()
-	carry_item.position = player.carry_item_location.position
-	player.add_child(carry_item)
 
 
 func physics_update(_delta: float) -> void:
@@ -26,3 +22,5 @@ func physics_update(_delta: float) -> void:
 		else:
 			finished.emit(CARRY_WALK, {"dir": player.facing_dir})
 	
+	if Input.is_action_just_pressed("pick"):
+		finished.emit(DROPPING, {"dir": player.facing_dir, "carry_item": player.carry_item})

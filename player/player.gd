@@ -27,6 +27,7 @@ var current_tool: tools = tools.SWORD
 var object_on_way: String
 var item_carrying: Global.carry_items = Global.carry_items.NONE
 
+var carry_object: Node
 
 func _ready():
 	animation_state = animation_tree["parameters/playback"]
@@ -48,4 +49,10 @@ func _process(_delta: float) -> void:
 	if ray_cast.get_collider() != null:
 		object_on_way = str(ray_cast.get_collider().name)
 	else:
-		object_on_way = ""
+		object_on_way = "None"
+
+func add_carry_item_to_scene(carry_item: Global.carry_items):
+	if carry_item == Global.carry_items.RAW_CHICKEN || Global.carry_items.COOKED_CHICKEN:
+		carry_object = load(Global.FOOD_SCENE_LOCATION).instantiate()
+		carry_object.position = carry_item_location.position
+		add_child(carry_object)

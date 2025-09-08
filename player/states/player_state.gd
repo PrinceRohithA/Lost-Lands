@@ -13,6 +13,7 @@ const PICKING = "picking"
 const CARRY_IDLE = "carry_idle"
 const CARRY_WALK = "carry_walk"
 const CARRY_RUN = "carry_run"
+const DROPPING = "dropping"
 
 var player: Player
 

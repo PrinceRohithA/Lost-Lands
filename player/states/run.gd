@@ -22,6 +22,12 @@ func physics_update(_delta: float) -> void:
 	
 	player.animation_tree["parameters/run/blend_position"] = player.facing_dir * Vector2(1, -1)
 	
+	player.move_and_slide()
+	
+	update_input()
+
+
+func update_input() -> void:
 	if Input.is_action_just_pressed("attack"):
 		if player.current_tool == player.tools.SWORD:
 			finished.emit(ATTACK, {"dir": player.facing_dir})
@@ -34,4 +40,9 @@ func physics_update(_delta: float) -> void:
 		elif player.current_tool == player.tools.FISHINGROD:
 			finished.emit(FISHING, {"dir": player.facing_dir})
 	
-	player.move_and_slide()
+	if Input.is_action_just_pressed("pick"):
+		var item = player.ray_cast.get_collider()
+		if item != null:
+			player.carry_item = item.item
+			item.call_deferred("queue_free")
+			finished.emit(PICKING, {"dir": player.facing_dir, "carry_item": player.carry_item})

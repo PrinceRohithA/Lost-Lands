@@ -10,9 +10,10 @@ class_name StateMachine extends Node
 func _ready() -> void:
 	for state_node: State in find_children("*", "State"):
 		state_node.finished.connect(_transition_to_next_state)
-
+	
 	await owner.ready
 	state.enter("")
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
@@ -31,7 +32,7 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	if not has_node(target_state_path):
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
 		return
-
+	
 	var previous_state_path := state.name
 	state.exit()
 	state = get_node(target_state_path)

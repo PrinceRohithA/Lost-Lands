@@ -25,3 +25,5 @@ func physics_update(_delta: float) -> void:
 	
 	player.animation_tree["parameters/carry_run/blend_position"] = player.facing_dir * Vector2(1, -1)
 	
+	if Input.is_action_just_pressed("pick"):
+		finished.emit(DROPPING, {"dir": player.facing_dir, "carry_item": player.carry_item})
