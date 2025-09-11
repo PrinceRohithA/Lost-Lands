@@ -11,6 +11,7 @@ extends Node
 @onready var run_label: Label = $CanvasLayer/Control/VBoxContainer2/run_label
 @onready var tool_label: Label = $CanvasLayer/Control/VBoxContainer2/tool_label
 @onready var object_label: Label = $CanvasLayer/Control/VBoxContainer2/object_label
+@onready var pickables: Node2D = $environment/Pickables
 
 
 func _process(_delta: float) -> void:
@@ -21,13 +22,14 @@ func _process(_delta: float) -> void:
 	state_label.text = "State :  " + clean_name(Global.current_state).capitalize()
 	run_label.text = "Run :  " + str(player.run).capitalize()
 	tool_label.text = "Tool :  " + get_tool_name(player.current_tool)
-	object_label.text = "Object :  " + player.object_on_way
+	object_label.text = "Object :  " + str(player.object_on_way)
 
 
 func clean_name(_name: String) -> String:
 	if ":" in _name:
 		return _name.split(":")[0].strip_edges()
 	return _name
+
 
 func get_tool_name(current_tool) -> String:
 	if current_tool == player.tools.SWORD:

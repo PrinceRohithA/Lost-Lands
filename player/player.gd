@@ -19,13 +19,14 @@ var state: String
 
 var run: bool = false
 
-var carry_item: Global.carry_items = Global.carry_items.NONE
+var carry_item: Global.CarryableItems = Global.CarryableItems.NONE
 
 enum tools { SWORD, AXE, BUCKET, PICKAXE, FISHINGROD }
 var current_tool: tools = tools.SWORD
 
-var object_on_way: String
-var item_carrying: Global.carry_items = Global.carry_items.NONE
+var object_on_way: Node
+
+var item_carrying: Global.CarryableItems = Global.CarryableItems.NONE
 
 var carry_object: Node
 
@@ -46,13 +47,27 @@ func _process(_delta: float) -> void:
 	
 	ray_cast.target_position = facing_dir * 20
 	
-	if ray_cast.get_collider() != null:
-		object_on_way = str(ray_cast.get_collider().name)
-	else:
-		object_on_way = "None"
+	object_on_way = ray_cast.get_collider()
 
-func add_carry_item_to_scene(carry_item: Global.carry_items):
-	if carry_item == Global.carry_items.RAW_CHICKEN || Global.carry_items.COOKED_CHICKEN:
-		carry_object = load(Global.FOOD_SCENE_LOCATION).instantiate()
-		carry_object.position = carry_item_location.position
-		add_child(carry_object)
+
+func _physics_process(_delta: float) -> void:
+	change_carry_pos(carry_object)
+
+
+#Handle Pick and Drop
+func change_carry_pos(item: Node):
+	if item != null:
+		if item.has_method("change_pos"):
+			item.change_pos(carry_item_location.global_position)
+
+func process_pick(item: Node):
+	carry_object = item
+	carry_object.is_being_carried = true
+	var tween = item.create_tween()
+	tween.tween_property(item, "position", carry_item_location.global_position, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+func process_drop(item: Node = carry_object):
+	item.is_being_carried = false
+	var tween = item.create_tween()
+	tween.tween_property(item, "position", global_position + ray_cast.target_position + Vector2(0, 10), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	carry_object = null

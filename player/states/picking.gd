@@ -9,8 +9,6 @@ func enter(_previous_state: String, data: Dictionary = {}) -> void:
 	if data.has("carry_item"):
 		player.carry_item = data["carry_item"]
 	
-	player.add_carry_item_to_scene(player.carry_item)
-	
 	player.animation_tree["parameters/picking/blend_position"] = player.facing_dir * Vector2(1, -1)
 	player.animation_state.travel("picking")
 

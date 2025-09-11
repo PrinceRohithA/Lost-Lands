@@ -38,6 +38,5 @@ func update_input() -> void:
 	if Input.is_action_just_pressed("pick"):
 		var item = player.ray_cast.get_collider()
 		if item != null:
-			player.carry_item = item.item
-			item.call_deferred("queue_free")
+			player.process_pick(item)
 			finished.emit(PICKING, {"dir": player.facing_dir, "carry_item": player.carry_item})

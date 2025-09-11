@@ -1514,7 +1514,7 @@ blend_point_3/pos = Vector2(-1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnw6m"]
-animation = &"pickaxe_up"
+animation = &"pickup_up"
 play_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1so5t"]
@@ -1833,7 +1833,7 @@ states/run/position = Vector2(656, -20)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_qjkh3")
 states/walk/position = Vector2(513, -20)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_yw30f"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_g6k8r"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_kb6p2"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_wodsf"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_qjkh3"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_boad6"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_rgyib"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_hg6s5"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_ebec5"), "idle", "axe", SubResource("AnimationNodeStateMachineTransition_rptt4"), "walk", "axe", SubResource("AnimationNodeStateMachineTransition_r7pn3"), "run", "axe", SubResource("AnimationNodeStateMachineTransition_b8hi5"), "axe", "idle", SubResource("AnimationNodeStateMachineTransition_2uvqg"), "axe", "run", SubResource("AnimationNodeStateMachineTransition_5ejfk"), "run", "bucket", SubResource("AnimationNodeStateMachineTransition_jd2rm"), "idle", "bucket", SubResource("AnimationNodeStateMachineTransition_q28gw"), "walk", "bucket", SubResource("AnimationNodeStateMachineTransition_ge24q"), "bucket", "idle", SubResource("AnimationNodeStateMachineTransition_55jnj"), "idle", "pickaxe", SubResource("AnimationNodeStateMachineTransition_dx5ib"), "walk", "pickaxe", SubResource("AnimationNodeStateMachineTransition_a2xo5"), "run", "pickaxe", SubResource("AnimationNodeStateMachineTransition_art4l"), "idle", "fishingrod", SubResource("AnimationNodeStateMachineTransition_fjxoa"), "walk", "fishingrod", SubResource("AnimationNodeStateMachineTransition_gswnw"), "run", "fishingrod", SubResource("AnimationNodeStateMachineTransition_xcnuv"), "pickaxe", "idle", SubResource("AnimationNodeStateMachineTransition_j55il"), "pickaxe", "walk", SubResource("AnimationNodeStateMachineTransition_hjies"), "pickaxe", "run", SubResource("AnimationNodeStateMachineTransition_mmwog"), "fishingrod", "reeling", SubResource("AnimationNodeStateMachineTransition_yllr7"), "reeling", "idle", SubResource("AnimationNodeStateMachineTransition_32hag"), "idle", "picking", SubResource("AnimationNodeStateMachineTransition_8pxes"), "walk", "picking", SubResource("AnimationNodeStateMachineTransition_fmu53"), "run", "picking", SubResource("AnimationNodeStateMachineTransition_w7j2h"), "picking", "carry_idle", SubResource("AnimationNodeStateMachineTransition_n0b8q"), "dropping", "idle", SubResource("AnimationNodeStateMachineTransition_jfgyi"), "carry_idle", "carry_walk", SubResource("AnimationNodeStateMachineTransition_237xx"), "carry_walk", "carry_run", SubResource("AnimationNodeStateMachineTransition_wpyo2"), "carry_run", "carry_walk", SubResource("AnimationNodeStateMachineTransition_7crtr"), "carry_walk", "carry_idle", SubResource("AnimationNodeStateMachineTransition_vgvch"), "carry_idle", "dropping", SubResource("AnimationNodeStateMachineTransition_a1u5o"), "carry_walk", "dropping", SubResource("AnimationNodeStateMachineTransition_3dxkp"), "carry_run", "dropping", SubResource("AnimationNodeStateMachineTransition_6wior"), "axe", "walk", SubResource("AnimationNodeStateMachineTransition_1s1yo")]
-graph_offset = Vector2(-215, -164)
+graph_offset = Vector2(-78, -267)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("3_yw30f")
@@ -1862,7 +1862,7 @@ parameters/bucket/blend_position = Vector2(-0.285486, -0.246637)
 parameters/carry_idle/blend_position = Vector2(0, 0)
 parameters/carry_run/blend_position = Vector2(0, 0)
 parameters/carry_walk/blend_position = Vector2(0, 0)
-parameters/dropping/blend_position = Vector2(0, 0)
+parameters/dropping/blend_position = Vector2(-1, 0.010989)
 parameters/fishingrod/blend_position = Vector2(-0.015949, -0.264574)
 parameters/idle/blend_position = Vector2(0.0239234, -0.524664)
 parameters/pickaxe/blend_position = Vector2(-0.0047847, 0.956044)

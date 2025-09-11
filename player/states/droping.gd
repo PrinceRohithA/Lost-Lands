@@ -15,4 +15,5 @@ func enter(_previous_state: String, data: Dictionary = {}) -> void:
 
 func update(_delta: float) -> void:
 	if !player.animation_state.get_current_node() == "dropping":
+		player.process_drop()
 		finished.emit(IDLE, {"dir": player.facing_dir, "carry_item": player.carry_item})
